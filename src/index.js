@@ -5,9 +5,9 @@ function debounce(fn, ms) {
     var ctx = this;
     var args = arguments;
 
-    var later = function() {
+    function later() {
       fn.apply(ctx, args);
-    };
+    }
 
     clearTimeout(timeout);
     timeout = setTimeout(later, ms);
@@ -59,7 +59,7 @@ function elementAttributeSelector(target) {
   var attributesArray = Array.prototype.slice.apply(target.attributes);
 
   var atrributeSelector = attributesArray.forEach(function(attr) {
-    if ( !attr || attr.name == 'class' || attr.name == 'style')
+    if (!attr || attr.name === 'class' || attr.name === 'style')
       return;
 
     attrSelector = attrSelector + '[' + attr.name + '="' + attr.value + '"]';
